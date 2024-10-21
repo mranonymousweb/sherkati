@@ -1,0 +1,593 @@
+/* styles.css */
+
+@font-face {
+    font-family: 'Bicubik';
+    src: url('/assets/Bicubik-71qR.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;    
+    font-family: 'Bicubik', sans-serif; /* یا هر نام دیگری که می‌خواهید */
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.cube-slider {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+.slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* چرخش هر اسلاید در فضای سه‌بعدی مکعب */
+    background: transparent;
+    backdrop-filter: blur(10px);
+}
+
+#slide1 {
+    transform: rotateY(0deg) translateZ(500px);
+    background: #282828;
+    color: #fff;
+}
+
+#slide2 {
+    transform: rotateY(90deg) translateZ(500px);
+    background: #282828;
+    color: #fff;
+}
+
+#slide3 {
+    transform: rotateY(180deg) translateZ(500px);
+    background: #282828;
+    color: #fff;
+}
+
+#slide4 {
+    transform: rotateY(-90deg) translateZ(500px);
+    background: #282828;
+    color: #fff;
+}
+
+.slide .content {
+    display: flex;
+    width: 80%;
+    max-width: 1200px;
+    text-align: center;
+    margin: 20px;
+}
+
+.text {
+    width: 50%;
+    padding: 30px;
+    margin: 20px;
+}
+
+.text h2 {
+    margin-top: 0;
+    padding: 10px;
+}
+
+.text p {
+    padding: 10px;
+}
+
+.image {
+    width: 50%;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.nav.left {
+    left: 10px;
+    font-size: 40px;
+}
+
+.nav.right {
+    right: 10px;
+    font-size: 40px;
+}
+
+.pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.page-btn {
+    background-color: rgba(187, 187, 187, 0.5);
+    color: white;
+    border: none;
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+
+.drawer {
+    display: none;
+    position: relative;
+    background-color: #f1f1f1;
+    padding: 20px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
+
+.drawer.active {
+    display: block;
+}
+
+
+.drawer-content {
+    position: relative;
+    height: 100%;
+    border-top-left-radius: 155px;
+    border-top-right-radius: 155px;
+    padding: 55px;
+}
+
+.close-drawer {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-size: 30px;
+    cursor: pointer;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.108);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 55px;
+    transition: 0.3s;
+}
+
+.close-drawer:active {
+    box-shadow: none;
+    transition: 0.3s;
+}
+
+.open-drawer {
+    padding: 20px 40px;
+    background: transparent;
+    border: 1px solid #2b8ac1;
+    border-radius: 10px;
+    color: #2b8ac1;
+    font-weight: 900;
+    transition: 0.3s;
+}
+
+.open-drawer:hover {
+    background: #2b8ac1;
+    transition: 0.3s;
+    color: #ffffff;
+}
+
+.drawer.active {
+    bottom: 0;
+}
+
+
+
+/* هدر اصلی */
+.main-header {
+    position: fixed;
+    /* موقعیت ثابت */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* عرض کامل صفحه */
+    height: 60px;
+    /* ارتفاع مشخص برای هدر */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgba(15, 15, 15, 0);
+    /* پس‌زمینه نیمه شفاف */
+    backdrop-filter: blur(5px);
+    color: white;
+    z-index: 1000;
+    /* اولویت نمایش بالا برای قرار گرفتن روی اسلایدر */
+    border-bottom: 1px solid #5a5a5a;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 44px;
+    color: #e8e7e7;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+.main-nav ul li {
+    display: inline-block;
+}
+
+.main-nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: background 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    background-color: #555;
+    border-radius: 5px;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+    margin-left: -400px;
+}
+
+.auth-buttons .login-btn,
+.auth-buttons .register-btn {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    background: #2b8ac1;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-left: -250px;
+    font-size: 20px;
+}
+
+.auth-buttons .login-btn:hover,
+.auth-buttons .register-btn:hover {
+    background-color: white;
+    color: #333;
+}
+
+
+
+/* استایل‌های عمومی که برای تمامی دستگاه‌ها قابل استفاده هستند، قبلاً تعریف شده‌اند */
+
+/* موبایل‌های کوچک (عرض کمتر از 480px) */
+@media (max-width: 480px) {
+    .main-header {
+        height: 50px;
+        /* کاهش ارتفاع هدر برای دستگاه‌های کوچک */
+        padding: 5px 10px;
+    }
+
+    .logo h1 {
+        font-size: 24px;
+        /* کوچک کردن فونت لوگو */
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        /* تغییر جهت منوی ناوبری به ستون */
+        gap: 10px;
+    }
+
+    .auth-buttons .login-btn,
+    .auth-buttons .register-btn {
+        font-size: 14px;
+        /* کوچک کردن دکمه‌های ورود و ثبت‌نام */
+        padding: 5px 10px;
+    }
+
+    .cube-slider .content {
+        flex-direction: column;
+        /* متن و تصویر در اسلایدر به صورت زیر هم قرار گیرند */
+    }
+
+    .text,
+    .image {
+        width: 100%;
+        /* متن و تصویر هر دو 100% عرض را بگیرند */
+    }
+
+    .image {
+        text-align: center;
+        margin-bottom: 20px;
+        /* ایجاد فاصله بین عکس و متن */
+    }
+
+    .image img {
+        max-width: 150px;
+        /* تنظیم عرض تصویر */
+        height: 100px;
+        border-radius: 150px;
+        /* دایره‌ای کردن تصویر */
+        object-fit: cover;
+        /* اطمینان از پوشش مناسب تصویر */
+        margin-top: 150%;
+    }
+
+    .text h2 {
+        text-align: center;
+        /* تراز وسط برای عنوان */
+    }
+}
+
+
+/* تبلت‌ها (عرض کمتر از 768px) */
+@media (max-width: 768px) {
+    .main-header {
+        height: 55px;
+        /* کمی کاهش ارتفاع هدر برای تبلت‌ها */
+        padding: 10px 15px;
+    }
+
+    .logo h1 {
+        font-size: 30px;
+        /* کوچک کردن فونت لوگو */
+    }
+
+    .main-nav ul {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .auth-buttons .login-btn,
+    .auth-buttons .register-btn {
+        font-size: 16px;
+        /* کوچک‌تر کردن دکمه‌ها */
+        padding: 8px 15px;
+    }
+
+    .cube-slider .content {
+        flex-direction: column;
+        /* متن و تصویر در اسلایدر به صورت زیر هم قرار گیرند */
+    }
+
+    .text,
+    .image {
+        width: 100%;
+    }
+
+    .image img {
+        max-width: 90%;
+    }
+}
+
+/* لپ‌تاپ‌ها و دسکتاپ‌های کوچک (عرض کمتر از 1024px) */
+@media (max-width: 1024px) {
+    .main-header {
+        height: 60px;
+        /* کاهش ارتفاع هدر */
+        padding: 15px 20px;
+    }
+
+    .logo h1 {
+        font-size: 35px;
+    }
+
+    .main-nav ul {
+        gap: 20px;
+    }
+
+    .auth-buttons .login-btn,
+    .auth-buttons .register-btn {
+        font-size: 18px;
+        /* کمی کوچک‌تر کردن دکمه‌ها */
+        padding: 10px 20px;
+    }
+
+    .cube-slider .content {
+        flex-direction: row;
+        /* در این اندازه متن و تصویر به حالت افقی باقی می‌مانند */
+    }
+
+    .text,
+    .image {
+        width: 50%;
+    }
+
+    .image img {
+        max-width: 100%;
+    }
+}
+
+/* دسکتاپ‌های بزرگ و بالاتر (عرض بیشتر از 1024px) */
+@media (min-width: 1024px) {
+    /* اندازه‌های پیش‌فرض برای دسکتاپ بزرگ و بالاتر اعمال می‌شود، نیاز به تغییرات خاصی نیست */
+}
+
+
+/* .opai{
+    width: 100%;
+    background: #36373d;
+    text-align: center;
+    margin-top: -20px;
+}
+
+.roadmap-content {
+    padding: 20px;
+    background-color: #36373d;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    align-items: center;
+    color: #fff;
+}
+
+
+#close-roadmap{
+    z-index: -1000;
+    padding: 20px !important;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    border-radius: 55px;
+    background: #ffffff2a;
+    backdrop-filter: blur(1px);
+    margin-top: -20px;
+}
+
+.sml {
+    display: flex; 
+    align-items: center; 
+    text-align: left; 
+    gap: -30px; 
+}
+
+.content-pmm {
+    max-width: 400px; 
+    margin-left: -100px !important;
+    margin-right: auto !important;
+    text-align: center;
+}
+
+#roadmap-image {
+    max-width: 300px;
+    height: auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    border-radius: 25px;
+}
+
+#roadmap-button {
+    padding: 15px 20px;
+    background: transparent;
+    border: 1px solid #2b8ac1;
+    border-radius: 10px;
+    color: #2b8ac1;
+    font-weight: 900;
+    transition: 0.3s;
+    width: 50%;
+    margin-top: 40px;
+}
+
+#roadmap-button:hover {
+    background: #2b8ac1;
+    transition: 0.3s;
+    color: #ffffff;
+} */
+
+
+
+
+
+.hsf{
+    background: #282828;
+    transform: translateY(-100px);
+    height: auto;
+}
+
+.roadmap-content {
+    display: none;
+    /* Initially hidden */
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.321);
+    overflow: hidden;
+    max-width: 800px;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 10px;
+}
+
+.opai{
+    width: 100%;
+    background: #36373d;
+    text-align: center;
+}
+
+#close-roadmap{
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    border-radius: 15px;
+    background: #ffffff2a;
+    backdrop-filter: blur(30px);
+    margin-top: -20px;
+    position: absolute;
+    color: #36373d;
+    width: 100px;
+    height: 40px;
+    transform: translate(-300px);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.sml {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#roadmap-image {
+    width: 300px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: none;
+    /* Initially hidden */
+}
+
+.content-pmm {
+    text-align: center;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 10px 0;
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #666;
+    margin: 10px 0;
+}
+
+#roadmap-button {
+    display: inline-block;
+    border-color: #2b8ac1;
+    color: #151515;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 30px;
+    transition: background-color 0.3s;
+}
+
+#roadmap-button:hover {
+    background-color: #2b8ac1;
+    color: #ffffff;
+}
