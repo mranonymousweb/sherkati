@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نمونه وب‌سایت</title>
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+
+<body>
+
+    <!------------------------ start header ------------------------>
+
+    <header class="main-header">
+        <div class="logo">
+            <h1>LOGO</h1>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <!-- Add your navigation items here -->
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <a href="#login" class="login-btn">LAUNCH APP</a>
+        </div>
+    </header>
+
+    <!------------------------ end header ------------------------>
+
+    <div class="slider-container">
+        <div class="cube-slider">
+            <div class="slide" id="slide1">
+                <div class="content">
+                    <div class="text">
+                        <h1>a one title</h1>
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla corrupti neque fuga id sit
+                            consequatur.</p>
+                        <button class="open-drawer" data-slide="1">Roadmap</button>
+                    </div>
+                    <div class="image">
+                        <img src="assets/1.jpg" width="300px" alt="Image 1">
+                    </div>
+                </div>
+            </div>
+            <div class="slide" id="slide2">
+                <div class="content">
+                    <div class="text">
+                        <h2>a two title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium tempora deleniti at hic
+                            earum quibusdam.</p>
+                        <button class="open-drawer" data-slide="2">Roadmap</button>
+                    </div>
+                    <div class="image">
+                        <img src="https://via.placeholder.com/300" alt="Image 2">
+                    </div>
+                </div>
+            </div>
+            <div class="slide" id="slide3">
+                <div class="content">
+                    <div class="text">
+                        <h2>a three title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium tempora deleniti at hic
+                            earum quibusdam.</p>
+                        <button class="open-drawer" data-slide="3">Roadmap</button>
+                    </div>
+                    <div class="image">
+                        <img src="https://via.placeholder.com/300" alt="Image 3">
+                    </div>
+                </div>
+            </div>
+            <div class="slide" id="slide4">
+                <div class="content">
+                    <div class="text">
+                        <h2>a four title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium tempora deleniti at hic
+                            earum quibusdam.</p>
+                        <button class="open-drawer" data-slide="4">Roadmap</button>
+                    </div>
+                    <div class="image">
+                        <img src="https://via.placeholder.com/300" alt="Image 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="nav left">&#10094;</button>
+        <button class="nav right">&#10095;</button>
+        <div class="pagination">
+            <button class="page-btn" data-slide="1">slide ۱</button>
+            <button class="page-btn" data-slide="2">slide ۲</button>
+            <button class="page-btn" data-slide="3">slide ۳</button>
+            <button class="page-btn" data-slide="4">slide ۴</button>
+        </div>
+    </div>
+
+    <!-- اینجا بخش اطلاعات هر اسلاید قرار می‌گیرد -->
+
+
+
+
+    <div class="hsf">
+        <div class="roadmap-content" id="roadmap-content">
+            <div class="opai">
+                <button id="close-roadmap" class="close-button">&times;</button> <!-- دکمه بستن -->
+            </div>
+            <div class="sml">
+                <img id="roadmap-image" src="" alt="Roadmap Image" />
+                <div class="content-pmm">
+                    <h3>Slide Roadmap <span id="roadmap-slide-number"></span></h3>
+                    <p id="roadmap-description" style="font-size: 16px;">اطلاعات مربوط به اسلاید <span id="roadmap-slide-number-2"></span>.</p>
+                    <a id="roadmap-button" class="open-drawer" href="#">دکمه</a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
