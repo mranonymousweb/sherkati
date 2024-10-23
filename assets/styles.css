@@ -14,12 +14,14 @@ html {
     height: 100%;
     font-family: Arial, sans-serif;    
     font-family: 'Bicubik', sans-serif; /* یا هر نام دیگری که می‌خواهید */
+    background: #000000;
 }
 
 .slider-container {
     position: relative;
     width: 100%;
     height: 100%;
+    
 }
 
 .cube-slider {
@@ -27,10 +29,13 @@ html {
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 1s;
+    transition: transform 2s;
+    backface-visibility: hidden; /* پنهان کردن پشت اسلاید */
 }
 
-.slide {
+.xyz-slide  {
+    border: none; /* بردر حذف شود */
+    backface-visibility: hidden; /* پنهان کردن پشت اسلاید */
     position: absolute;
     width: 100%;
     height: 100%;
@@ -40,38 +45,40 @@ html {
     justify-content: center;
     /* چرخش هر اسلاید در فضای سه‌بعدی مکعب */
     background: transparent;
-    backdrop-filter: blur(10px);
+    backface-visibility: hidden;
+    outline: none; /* برداشتن outline یا بردرهای موقت */
+    box-shadow: none; /* برداشتن سایه در هنگام انتقال */
+    z-index: 1; /* تغییر z-index برای اسلاید‌ها */
+
 }
 
 #slide1 {
     transform: rotateY(0deg) translateZ(500px);
-    background: #282828;
     color: #fff;
 }
 
 #slide2 {
     transform: rotateY(90deg) translateZ(500px);
-    background: #282828;
     color: #fff;
 }
 
 #slide3 {
     transform: rotateY(180deg) translateZ(500px);
-    background: #282828;
     color: #fff;
 }
 
 #slide4 {
     transform: rotateY(-90deg) translateZ(500px);
-    background: #282828;
     color: #fff;
 }
 
-.slide .content {
+.xyz-slide  .xyz-content {
     display: flex;
+    position: relative; /* اضافه کردن position relative */
+    z-index: 2; /* مقدار ز تنسی برای محتوا */
     width: 80%;
     max-width: 1200px;
-    text-align: center;
+    text-align: left;
     margin: 20px;
 }
 
@@ -90,6 +97,16 @@ html {
     padding: 10px;
 }
 
+
+.xyz-content {
+    transition: opacity 0.3s ease; /* انتقال نرم برای opacity */
+    position: relative; /* اضافه کردن position relative */
+    z-index: 2; /* مقدار ز تنسی برای محتوا */
+}
+
+
+
+
 .image {
     width: 50%;
     text-align: center;
@@ -106,12 +123,14 @@ html {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0);
     color: white;
     border: none;
     padding: 10px;
     cursor: pointer;
     font-size: 18px;
+    z-index: 10; /* اطمینان از اینکه ناوبری بالاتر از سایر عناصر است */
+
 }
 
 .nav.left {
@@ -124,20 +143,40 @@ html {
     font-size: 40px;
 }
 
+.xyz-pgnm{
+    display: flex;
+    flex-wrap: nowrap;
+    transform: translateY(-50px);
+}
+
+.xyz-pgnm .socials{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    margin-left: auto;
+    margin-right: 200px;
+    transform: translateY(-50px);
+}
+
 .pagination {
-    position: absolute;
+    position: relative;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    margin-top: -50px !important;
+    transform: translateX(-700px);
+    width: 30%;
 }
 
 .page-btn {
-    background-color: rgba(187, 187, 187, 0.5);
+    background-color: rgba(187, 187, 187, 0);
     color: white;
     border: none;
     padding: 20px;
     cursor: pointer;
     border-radius: 50px;
+    font-weight: 900;
+    font-size: 15px;
 }
 
 .drawer {
@@ -181,19 +220,21 @@ html {
 }
 
 .open-drawer {
-    padding: 20px 40px;
-    background: transparent;
-    border: 1px solid #2b8ac1;
-    border-radius: 10px;
-    color: #2b8ac1;
-    font-weight: 900;
-    transition: 0.3s;
+    color: white;
+    text-decoration: none;
+    padding: 15px 25px;
+    background: #2b8ac1;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 20px;
+    border: none;
+    position: relative; /* اضافه کردن position relative به دکمه */
+    z-index: 3; /* دکمه را بالاتر از سایر عناصر قرار دهید */
 }
 
 .open-drawer:hover {
-    background: #2b8ac1;
-    transition: 0.3s;
-    color: #ffffff;
+    background-color: white;
+    color: #333;
 }
 
 .drawer.active {
@@ -309,7 +350,7 @@ html {
         padding: 5px 10px;
     }
 
-    .cube-slider .content {
+    .cube-slider .xyz-content {
         flex-direction: column;
         /* متن و تصویر در اسلایدر به صورت زیر هم قرار گیرند */
     }
@@ -369,7 +410,7 @@ html {
         padding: 8px 15px;
     }
 
-    .cube-slider .content {
+    .cube-slider .xyz-content {
         flex-direction: column;
         /* متن و تصویر در اسلایدر به صورت زیر هم قرار گیرند */
     }
@@ -407,7 +448,7 @@ html {
         padding: 10px 20px;
     }
 
-    .cube-slider .content {
+    .cube-slider .xyz-content {
         flex-direction: row;
         /* در این اندازه متن و تصویر به حالت افقی باقی می‌مانند */
     }
@@ -465,7 +506,7 @@ html {
     gap: -30px; 
 }
 
-.content-pmm {
+.xyz-content-pmm {
     max-width: 400px; 
     margin-left: -100px !important;
     margin-right: auto !important;
@@ -504,21 +545,23 @@ html {
 
 .hsf{
     background: #282828;
-    transform: translateY(-100px);
+    transform: translateY(-400px);
     height: auto;
+    border-top: 1px solid #fff;
 }
 
 .roadmap-content {
     display: none;
     /* Initially hidden */
-    background-color: #ffffff;
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.321);
     overflow: hidden;
-    max-width: 800px;
+    max-width: 1000px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: -100px;
     font-size: 10px;
+    direction: rtl;
+    gap: 20px;
+    
 }
 
 .opai{
@@ -532,17 +575,11 @@ html {
     border: none;
     color: #fff;
     font-size: 30px;
-    border-radius: 15px;
-    background: #ffffff2a;
-    backdrop-filter: blur(30px);
+    border-radius: 55px;
+    backdrop-filter: blur(10px);
     margin-top: -20px;
     position: absolute;
-    color: #36373d;
-    width: 100px;
-    height: 40px;
-    transform: translate(-300px);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    padding: 8px 19px;
 }
 
 .sml {
@@ -562,6 +599,9 @@ html {
 
 .content-pmm {
     text-align: center;
+    margin-right: 100px;
+    font-size: 10px;
+    width: 600px;
 }
 
 h3 {
@@ -579,7 +619,7 @@ p {
 #roadmap-button {
     display: inline-block;
     border-color: #2b8ac1;
-    color: #151515;
+    color: #ffffff;
     padding: 10px 20px;
     border-radius: 5px;
     text-decoration: none;
@@ -588,6 +628,16 @@ p {
 }
 
 #roadmap-button:hover {
-    background-color: #2b8ac1;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #060606;
+}
+
+.solima{
+    background: transparent;
+    height: 200px;
+    width: 100px;
+}
+
+.page-btn.active {
+    color: #2b8ac1; /* رنگ متن */
 }
