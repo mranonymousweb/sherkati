@@ -77,9 +77,10 @@ html {
     position: relative; /* اضافه کردن position relative */
     z-index: 2; /* مقدار ز تنسی برای محتوا */
     width: 80%;
-    max-width: 1200px;
+    max-width: 1000px;
     text-align: left;
     margin: 20px;
+    font-size: 10px;
 }
 
 .text {
@@ -91,10 +92,12 @@ html {
 .text h2 {
     margin-top: 0;
     padding: 10px;
+    font-size: 15px;
 }
 
 .text p {
     padding: 10px;
+    font-size: 10px;
 }
 
 
@@ -128,7 +131,7 @@ html {
     border: none;
     padding: 10px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 13px;
     z-index: 10; /* اطمینان از اینکه ناوبری بالاتر از سایر عناصر است */
 
 }
@@ -146,7 +149,16 @@ html {
 .xyz-pgnm{
     display: flex;
     flex-wrap: nowrap;
-    transform: translateY(-50px);
+    transform: translateY(-50px); 
+}
+
+.xyz-mlg{
+    width: 100%;
+    height: auto;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: nowrap;
+    transform: translateY(-10px);
 }
 
 .xyz-pgnm .socials{
@@ -176,7 +188,7 @@ html {
     cursor: pointer;
     border-radius: 50px;
     font-weight: 900;
-    font-size: 15px;
+    font-size: 10px;
 }
 
 .drawer {
@@ -226,7 +238,7 @@ html {
     background: #2b8ac1;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    font-size: 20px;
+    font-size: 13px;
     border: none;
     position: relative; /* اضافه کردن position relative به دکمه */
     z-index: 3; /* دکمه را بالاتر از سایر عناصر قرار دهید */
@@ -311,7 +323,7 @@ html {
     border-radius: 5px;
     transition: background-color 0.3s ease;
     margin-left: -250px;
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .auth-buttons .login-btn:hover,
@@ -559,7 +571,6 @@ html {
     margin: auto;
     margin-top: -100px;
     font-size: 10px;
-    direction: rtl;
     gap: 20px;
     
 }
@@ -580,6 +591,7 @@ html {
     margin-top: -20px;
     position: absolute;
     padding: 8px 19px;
+    margin-left: 30%;
 }
 
 .sml {
@@ -616,16 +628,7 @@ p {
     margin: 10px 0;
 }
 
-#roadmap-button {
-    display: inline-block;
-    border-color: #2b8ac1;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-decoration: none;
-    margin-top: 30px;
-    transition: background-color 0.3s;
-}
+
 
 #roadmap-button:hover {
     background-color: #ffffff;
