@@ -10,9 +10,8 @@ const roadmapSlideNumber = document.getElementById('roadmap-slide-number');
 const roadmapDescription = document.getElementById('roadmap-description');
 const roadmapImage = document.getElementById('roadmap-image');
 const roadmapButton = document.getElementById('roadmap-button');
-const closeRoadmapButton = document.getElementById('close-roadmap'); // دکمه بستن
+const closeRoadmapButton = document.getElementById('close-roadmap');
 
-// داده‌های مربوط به roadmap
 const roadmapData = {
     1: {
         description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nulla corrupti neque fuga id sit consequatur.",
@@ -47,27 +46,28 @@ function updateSlider() {
     // پنهان کردن محتوای roadmap هنگام تغییر اسلاید
     roadmapContent.style.display = 'none';
 
-    // پنهان کردن محتویات اسلاید قبلی
-    const previousSlideElement = slides[(currentSlide - 1 + totalSlides) % totalSlides];
+    const previousSlideIndex = (currentSlide - 1 + totalSlides) % totalSlides;
+    const previousSlideElement = slides[previousSlideIndex];
     const currentSlideElement = slides[currentSlide];
 
-    // محو کردن محتوای قبلی
-    previousSlideElement.querySelector('.xyz-content').style.opacity = '0';
-    previousSlideElement.querySelector('.xyz-content').style.visibility = 'hidden';
+    // محو کردن محتوای قبلی با تاخیر 100 میلی‌ثانیه
     setTimeout(() => {
-        // پس از محو شدن، محتوای جدید را نشان دهید
+        previousSlideElement.querySelector('.xyz-content').style.opacity = '0';
+        previousSlideElement.querySelector('.xyz-content').style.visibility = 'hidden';
+    }, 400);
+
+    setTimeout(() => {
+        // نمایش محتوای جدید با ترنزیشن
         currentSlideElement.querySelector('.xyz-content').style.visibility = 'visible';
         currentSlideElement.querySelector('.xyz-content').style.opacity = '1';
-    }, 1600);
+    }, 400); // تاخیر 600 میلی‌ثانیه برای نمایش محتوای جدید
 }
 
 function updateActiveSlide() {
-    // بروزرسانی دکمه‌های صفحه
     pageButtons.forEach((button, index) => {
         button.classList.toggle('active', index === currentSlide);
     });
 
-    // بروزرسانی کلاس active برای اسلایدها
     slides.forEach((slide, index) => {
         slide.classList.toggle('active', index === currentSlide);
     });
@@ -98,38 +98,29 @@ openDrawers.forEach(button => {
         const slideNumber = button.getAttribute('data-slide');
         roadmapSlideNumber.textContent = slideNumber;
 
-        // بارگذاری اطلاعات مربوط به اسلاید
         const data = roadmapData[slideNumber];
         roadmapDescription.textContent = data.description;
         roadmapImage.src = data.image;
         roadmapImage.style.display = 'block';
         roadmapButton.textContent = data.buttonText;
-        roadmapButton.href = data.buttonLink; // لینک به دکمه
-        roadmapButton.style.display = 'inline-block';
+        roadmapButton.href = data.buttonLink;
+        roadmapButton.style.display = 'none';
 
-        // نمایش بخش roadmap-content
         roadmapContent.style.display = 'block';
-        roadmapContent.style.maxHeight = '800px'; // تعیین حداکثر ارتفاع برای افکت کش
+        roadmapContent.style.maxHeight = '800px';
 
-        // جابجایی pagination به سمت پایین
         document.querySelector('.pagination').style.marginTop = '400px';
 
-        // اسکرول به پایین
         roadmapContent.scrollIntoView({ behavior: 'smooth' });
     });
 });
 
-// اضافه کردن رویداد کلیک برای دکمه بستن
 closeRoadmapButton.addEventListener('click', () => {
-    roadmapContent.style.maxHeight = '0'; // مخفی کردن رودمپ با افکت کش
-    // بازگرداندن pagination به موقعیت قبلی
+    roadmapContent.style.maxHeight = '0';
     document.querySelector('.pagination').style.marginTop = '0';
 
-    // پنهان کردن roadmap بعد از افکت
-    setTimeout(() => {
-        roadmapContent.style.display = 'none'; // مخفی کردن رودمپ بعد از افکت
-    }, 0); // مدت زمان افکت
+    roadmapContent.style.display = 'none';
+    
 });
 
-// تنظیم دکمه فعال اولیه
-updateActiveSlide(); // برای تنظیم دکمه‌های صفحه بر اساس اسلاید اولیه
+updateActiveSlide();
