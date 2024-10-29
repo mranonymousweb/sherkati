@@ -146,13 +146,14 @@ html {
     font-size: 40px;
 }
 
-.xyz-pgnm{
+.xyz-pgnm {
     display: flex;
     flex-wrap: nowrap;
-    transform: translateY(-50px); 
+    transform: translateY(-50px);
 }
 
-.xyz-mlg{
+/* سبک پیش فرض برای دسکتاپ */
+.xyz-mlg {
     width: 100%;
     height: auto;
     margin-left: 10%;
@@ -161,7 +162,7 @@ html {
     transform: translateY(-10px);
 }
 
-.xyz-pgnm .socials{
+.xyz-pgnm .socials {
     display: flex;
     flex-wrap: nowrap;
     gap: 1.5rem;
@@ -176,7 +177,6 @@ html {
     left: 50%;
     transform: translateX(-50%);
     margin-top: -50px !important;
-    transform: translateX(-700px);
     width: 30%;
 }
 
@@ -191,6 +191,126 @@ html {
     font-size: 10px;
 }
 
+/* استایل‌های مخصوص موبایل و تبلت */
+@media (max-width: 768px) {
+    .xyz-pgnm {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .xyz-mlg {
+        margin-left: 0;
+        width: 90%;
+        flex-direction: column;
+        transform: translateY(0);
+        align-items: center;
+    }
+
+    .pagination {
+        position: static;
+        transform: translateX(0);
+        width: 100%;
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .page-btn {
+        padding: 15px;
+        font-size: 12px;
+    }
+
+    .xyz-pgnm .socials {
+        margin: 15px 0;
+        gap: 1rem;
+        transform: translateY(0);
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .pagination {
+        width: 100%;
+    }
+
+    .page-btn {
+        padding: 10px;
+        font-size: 10px;
+    }
+
+    .xyz-pgnm .socials {
+        gap: 0.5rem;
+    }
+}
+
+
+/* مدیا کوئری‌ها برای ریسپانسیو کردن کد */
+
+@media (max-width: 1024px) {
+    .xyz-slide .xyz-content {
+        font-size: 8px;
+        margin-left: 20px;
+    }
+
+    .image{
+        width: 200px;
+    }
+
+    .text h2 {
+        font-size: 13px;
+    }
+    .text p {
+        font-size: 8px;
+    }
+
+    .socials{
+        display: none;
+    }
+
+    .page-btn {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .text, .image {
+        width: 100%;
+    }
+    
+    .xyz-slide .xyz-content {
+        flex-direction: column;
+    }
+    .text {
+        padding: 15px;
+    }
+    .xyz-pgnm .socials {
+        margin-right: 0;
+    }
+    .pagination {
+        width: 50%;
+    }
+    .page-btn {
+        padding: 10px;
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav.left, .nav.right {
+        font-size: 30px;
+    }
+    .text h2 {
+        font-size: 12px;
+    }
+    .pagination {
+        width: 70%;
+    }
+    .page-btn {
+        padding: 8px;
+        font-size: 7px;
+    }
+}
+
 .drawer {
     display: none;
     position: relative;
@@ -202,8 +322,8 @@ html {
 
 .drawer.active {
     display: block;
+    bottom: 0;
 }
-
 
 .drawer-content {
     position: relative;
@@ -240,8 +360,8 @@ html {
     transition: background-color 0.3s ease;
     font-size: 13px;
     border: none;
-    position: relative; /* اضافه کردن position relative به دکمه */
-    z-index: 3; /* دکمه را بالاتر از سایر عناصر قرار دهید */
+    position: relative;
+    z-index: 3;
 }
 
 .open-drawer:hover {
@@ -249,8 +369,87 @@ html {
     color: #333;
 }
 
-.drawer.active {
-    bottom: 0;
+/* مدیا کوئری‌ها برای ریسپانسیو کردن کد */
+
+@media (max-width: 1024px) {
+    .drawer-content {
+        padding: 30px;
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+    }
+    .close-drawer {
+        top: 20px;
+        right: 30px;
+        font-size: 25px;
+    }
+    .open-drawer {
+        font-size: 12px;
+        padding: 12px 20px;
+    }
+    .xyz-content-pmm h3 {
+        font-size: 18px;
+    }
+    .xyz-content-pmm p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .drawer-content {
+        padding: 20px;
+        border-top-left-radius: 80px;
+        border-top-right-radius: 80px;
+    }
+    .close-drawer {
+        top: 15px;
+        right: 20px;
+        font-size: 20px;
+    }
+    .open-drawer {
+        font-size: 11px;
+        padding: 10px 18px;
+    }
+    .xyz-content-pmm h3 {
+        font-size: 16px;
+    }
+    .xyz-content-pmm p {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .drawer-content {
+        padding: 25px;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+    }
+    .close-drawer {
+        top: 10px;
+        right: 15px;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .open-drawer {
+        font-size: 10px;
+        padding: 8px 15px;
+    }
+    .xyz-content-pmm h3 {
+        font-size: 14px;
+    }
+    .xyz-content-pmm p {
+        font-size: 12px;
+    }
+    .roadmap-content {
+        padding: 10px;
+    }
+    .sml {
+        flex-direction: column;
+    }
+    .xyz-left-roadmap,
+    .xyz-right-roadmap {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }
 
 
@@ -322,7 +521,7 @@ html {
     background: #2b8ac1;
     border-radius: 5px;
     transition: background-color 0.3s ease;
-    margin-left: -250px;
+    margin-left: -220px;
     font-size: 15px;
 }
 
@@ -331,230 +530,6 @@ html {
     background-color: white;
     color: #333;
 }
-
-
-
-/* استایل‌های عمومی که برای تمامی دستگاه‌ها قابل استفاده هستند، قبلاً تعریف شده‌اند */
-
-/* موبایل‌های کوچک (عرض کمتر از 480px) */
-@media (max-width: 480px) {
-    .main-header {
-        height: 50px;
-        /* کاهش ارتفاع هدر برای دستگاه‌های کوچک */
-        padding: 5px 10px;
-    }
-
-    .logo h1 {
-        font-size: 24px;
-        /* کوچک کردن فونت لوگو */
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        /* تغییر جهت منوی ناوبری به ستون */
-        gap: 10px;
-    }
-
-    .auth-buttons .login-btn,
-    .auth-buttons .register-btn {
-        font-size: 14px;
-        /* کوچک کردن دکمه‌های ورود و ثبت‌نام */
-        padding: 5px 10px;
-    }
-
-    .cube-slider .xyz-content {
-        flex-direction: column;
-        /* متن و تصویر در اسلایدر به صورت زیر هم قرار گیرند */
-    }
-
-    .text,
-    .image {
-        width: 100%;
-        /* متن و تصویر هر دو 100% عرض را بگیرند */
-    }
-
-    .image {
-        text-align: center;
-        margin-bottom: 20px;
-        /* ایجاد فاصله بین عکس و متن */
-    }
-
-    .image img {
-        max-width: 150px;
-        /* تنظیم عرض تصویر */
-        height: 100px;
-        border-radius: 150px;
-        /* دایره‌ای کردن تصویر */
-        object-fit: cover;
-        /* اطمینان از پوشش مناسب تصویر */
-        margin-top: 150%;
-    }
-
-    .text h2 {
-        text-align: center;
-        /* تراز وسط برای عنوان */
-    }
-}
-
-
-/* تبلت‌ها (عرض کمتر از 768px) */
-@media (max-width: 768px) {
-    .main-header {
-        height: 55px;
-        /* کمی کاهش ارتفاع هدر برای تبلت‌ها */
-        padding: 10px 15px;
-    }
-
-    .logo h1 {
-        font-size: 30px;
-        /* کوچک کردن فونت لوگو */
-    }
-
-    .main-nav ul {
-        flex-direction: row;
-        gap: 15px;
-    }
-
-    .auth-buttons .login-btn,
-    .auth-buttons .register-btn {
-        font-size: 16px;
-        /* کوچک‌تر کردن دکمه‌ها */
-        padding: 8px 15px;
-    }
-
-    .cube-slider .xyz-content {
-        flex-direction: column;
-        /* متن و تصویر در اسلایدر به صورت زیر هم قرار گیرند */
-    }
-
-    .text,
-    .image {
-        width: 100%;
-    }
-
-    .image img {
-        max-width: 90%;
-    }
-}
-
-/* لپ‌تاپ‌ها و دسکتاپ‌های کوچک (عرض کمتر از 1024px) */
-@media (max-width: 1024px) {
-    .main-header {
-        height: 60px;
-        /* کاهش ارتفاع هدر */
-        padding: 15px 20px;
-    }
-
-    .logo h1 {
-        font-size: 35px;
-    }
-
-    .main-nav ul {
-        gap: 20px;
-    }
-
-    .auth-buttons .login-btn,
-    .auth-buttons .register-btn {
-        font-size: 18px;
-        /* کمی کوچک‌تر کردن دکمه‌ها */
-        padding: 10px 20px;
-    }
-
-    .cube-slider .xyz-content {
-        flex-direction: row;
-        /* در این اندازه متن و تصویر به حالت افقی باقی می‌مانند */
-    }
-
-    .text,
-    .image {
-        width: 50%;
-    }
-
-    .image img {
-        max-width: 100%;
-    }
-}
-
-/* دسکتاپ‌های بزرگ و بالاتر (عرض بیشتر از 1024px) */
-@media (min-width: 1024px) {
-    /* اندازه‌های پیش‌فرض برای دسکتاپ بزرگ و بالاتر اعمال می‌شود، نیاز به تغییرات خاصی نیست */
-}
-
-
-/* .opai{
-    width: 100%;
-    background: #36373d;
-    text-align: center;
-    margin-top: -20px;
-}
-
-.roadmap-content {
-    padding: 20px;
-    background-color: #36373d;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    align-items: center;
-    color: #fff;
-}
-
-
-#close-roadmap{
-    z-index: -1000;
-    padding: 20px !important;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 30px;
-    border-radius: 55px;
-    background: #ffffff2a;
-    backdrop-filter: blur(1px);
-    margin-top: -20px;
-}
-
-.sml {
-    display: flex; 
-    align-items: center; 
-    text-align: left; 
-    gap: -30px; 
-}
-
-.xyz-content-pmm {
-    max-width: 400px; 
-    margin-left: -100px !important;
-    margin-right: auto !important;
-    text-align: center;
-}
-
-#roadmap-image {
-    max-width: 300px;
-    height: auto;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    border-radius: 25px;
-}
-
-#roadmap-button {
-    padding: 15px 20px;
-    background: transparent;
-    border: 1px solid #2b8ac1;
-    border-radius: 10px;
-    color: #2b8ac1;
-    font-weight: 900;
-    transition: 0.3s;
-    width: 50%;
-    margin-top: 40px;
-}
-
-#roadmap-button:hover {
-    background: #2b8ac1;
-    transition: 0.3s;
-    color: #ffffff;
-} */
-
-
-
-
-
 .hsf{
     background: #282828;
     transform: translateY(-400px);
