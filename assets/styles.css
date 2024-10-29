@@ -174,7 +174,7 @@ html {
 .pagination {
     position: relative;
     bottom: 20px;
-    left: 50%;
+    left: 10%;
     transform: translateX(-50%);
     margin-top: -50px !important;
     width: 30%;
@@ -252,7 +252,7 @@ html {
         margin-left: 20px;
     }
 
-    .image{
+    .image img{
         width: 200px;
     }
 
