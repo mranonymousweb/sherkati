@@ -54,7 +54,7 @@ function updateSlider() {
     setTimeout(() => {
         previousSlideElement.querySelector('.xyz-content').style.opacity = '0';
         previousSlideElement.querySelector('.xyz-content').style.visibility = 'hidden';
-    }, 300);
+    }, 600);
 
     setTimeout(() => {
         // نمایش محتوای جدید با ترنزیشن
