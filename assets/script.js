@@ -11,6 +11,9 @@ const roadmapDescription = document.getElementById('roadmap-description');
 const roadmapImage = document.getElementById('roadmap-image');
 const roadmapButton = document.getElementById('roadmap-button');
 const closeRoadmapButton = document.getElementById('close-roadmap');
+const PageBody = document.getElementById('page-body');
+const FooterBody = document.getElementById('footer');
+const pnnngm = document.getElementById('xyz-pp');
 
 const roadmapData = {
     1: {
@@ -45,6 +48,8 @@ function updateSlider() {
 
     // پنهان کردن محتوای roadmap هنگام تغییر اسلاید
     roadmapContent.style.display = 'none';
+    pnnngm.style.transform = 'none';
+
 
     const previousSlideIndex = (currentSlide - 1 + totalSlides) % totalSlides;
     const previousSlideElement = slides[previousSlideIndex];
@@ -54,13 +59,20 @@ function updateSlider() {
     setTimeout(() => {
         previousSlideElement.querySelector('.xyz-content').style.opacity = '0';
         previousSlideElement.querySelector('.xyz-content').style.visibility = 'hidden';
-    }, 600);
+    }, 1800);
 
     setTimeout(() => {
         // نمایش محتوای جدید با ترنزیشن
         currentSlideElement.querySelector('.xyz-content').style.visibility = 'visible';
         currentSlideElement.querySelector('.xyz-content').style.opacity = '1';
-    }, 400); // تاخیر 600 میلی‌ثانیه برای نمایش محتوای جدید
+    }, 400);
+
+    // تغییر رنگ roadmap بر اساس اسلایدهای فرد
+    if ((currentSlide + 1) % 2 !== 0) {
+        roadmapContent.style.backgroundColor = '#36373d';
+    } else {
+        roadmapContent.style.backgroundColor = ''; // رنگ پیش‌فرض یا رنگی که برای اسلایدهای زوج می‌خواهید
+    }
 }
 
 function updateActiveSlide() {
@@ -105,13 +117,14 @@ openDrawers.forEach(button => {
         roadmapButton.textContent = data.buttonText;
         roadmapButton.href = data.buttonLink;
         roadmapButton.style.display = 'none';
-
+        pnnngm.style.transform = 'translateY(150px)';
         roadmapContent.style.display = 'block';
-        roadmapContent.style.maxHeight = '800px';
+        roadmapContent.style.maxHeight = '400px';
 
         document.querySelector('.pagination').style.marginTop = '400px';
 
         roadmapContent.scrollIntoView({ behavior: 'smooth' });
+        PageBody.style.overflowY = 'scroll';
     });
 });
 
@@ -120,7 +133,10 @@ closeRoadmapButton.addEventListener('click', () => {
     document.querySelector('.pagination').style.marginTop = '0';
 
     roadmapContent.style.display = 'none';
-    
+    closeRoadmapButton.style.display = 'none';
+    PageBody.style.overflowY = 'scroll';
+    pnnngm.style.transform = 'none';
+
 });
 
 updateActiveSlide();
