@@ -254,7 +254,8 @@ footer {
 
 @media (max-width: 1024px) {
     .xyz-slide .xyz-content {
-        font-size: 8px;
+        font-size: 15px;
+        padding: 20px;
         margin-left: 20px;
     }
 
@@ -264,7 +265,7 @@ footer {
     }
 
     .text h2 {
-        font-size: 13px;
+        font-size: 23px;
     }
     .text p {
         font-size: 8px;
@@ -286,16 +287,16 @@ footer {
     
     .xyz-slide .xyz-content {
         flex-direction: column;
-        margin-top: -40px;
+        margin-top: -80px;
     }
     .text {
-        padding: 15px;
+        padding: 25px;
     }
     .xyz-pgnm .socials {
         margin-right: 0;
     }
     .pagination {
-        margin-top: 40px;
+        margin-top: 90px;
         width: 50%;
     }
     .page-btn {
@@ -309,14 +310,14 @@ footer {
         font-size: 30px;
     }
     .text h2 {
-        font-size: 12px;
+        font-size: 22px;
     }
     .pagination {
         width: 70%;
     }
     .page-btn {
         padding: 8px;
-        font-size: 7px;
+        font-size: 10px;
     }
 }
 
