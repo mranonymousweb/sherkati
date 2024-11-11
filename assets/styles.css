@@ -21,7 +21,7 @@ html {
 .slider-container {
     position: relative;
     width: 100%;
-    height: 100%;
+    height: 71%;
     
 }
 
@@ -32,7 +32,6 @@ html {
     transform-style: preserve-3d;
     transition: transform 2s;
     backface-visibility: hidden; /* پنهان کردن پشت اسلاید */
-    margin-top: -100px;
 }
 
 .xyz-slide  {
@@ -259,7 +258,8 @@ footer {
     }
 
     .image img{
-        width: 200px;
+        width: 250px;
+        margin-top: 40px;
     }
 
     .text h2 {
@@ -285,7 +285,7 @@ footer {
     
     .xyz-slide .xyz-content {
         flex-direction: column;
-        margin-top: -90px;
+        margin-top: -40px;
     }
     .text {
         padding: 15px;
@@ -294,6 +294,7 @@ footer {
         margin-right: 0;
     }
     .pagination {
+        margin-top: 40px;
         width: 50%;
     }
     .page-btn {
@@ -529,6 +530,8 @@ footer {
     transition: background-color 0.3s ease;
     margin-left: -120px;
     font-size: 12px;
+    cursor: pointer;
+
 }
 
 .auth-buttons .login-btn:hover,
@@ -544,14 +547,13 @@ footer {
 }
 
 
-.xyz-moz{
+.xyz-moz {
     background: #282828;
+    color: #fff;
 }
 
-
 .roadmap-content {
-    display: none;
-    /* Initially hidden */
+    display: none; /* Initially hidden */
     overflow: hidden;
     max-width: 1000px;
     margin: auto;
@@ -559,12 +561,12 @@ footer {
     font-size: 10px;
 }
 
-.opai{
+.opai {
     width: 100%;
     text-align: center;
 }
 
-#close-roadmap{
+#close-roadmap {
     background: none;
     border: none;
     color: #fff;
@@ -572,7 +574,7 @@ footer {
     border-radius: 55px;
     backdrop-filter: blur(10px);
     padding: 8px 19px;
-    margin-left: 30%;
+    margin-right: 100%;
     background: transparent;
 }
 
@@ -583,45 +585,57 @@ footer {
     gap: 10px;
 }
 
-#roadmap-image {
+.slide-section {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 1000px;
+}
+
+.slide-section img {
     width: 300px;
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-right: 20px; /* فاصله بین عکس و متن */
+}
+
+.slide-content {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+
+.slide-content h3 {
+    font-size: 34px;
+    margin: 30px 0;
+    color: #fff;
+}
+
+.slide-content p {
+    font-size: 36px;
+    color: #ccc;
+    margin: 10px 0;
+}
+
+.slide-section a {
     display: none;
-    /* Initially hidden */
 }
 
-.content-pmm {
-    text-align: center;
-    margin-right: 100px;
-    font-size: 10px;
-    width: 600px;
-}
-
-h3 {
-    font-size: 24px;
-    margin: 10px 0;
-    color: #333;
-}
-
-p {
-    font-size: 16px;
-    color: #666;
-    margin: 10px 0;
-}
-
-
-
-#roadmap-button:hover {
+.slide-section a:hover {
     background-color: #ffffff;
     color: #060606;
 }
 
-.solima{
+.solima {
     background: transparent;
     height: 200px;
     width: 100px;
 }
+
+
 
 .page-btn.active {
     color: #2b8ac1; /* رنگ متن */
