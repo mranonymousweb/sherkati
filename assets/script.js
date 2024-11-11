@@ -24,19 +24,19 @@ const roadmapData = {
     },
     2: {
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corrupti neque fuga id sit consequatur.",
-        image: "https://via.placeholder.com/300",
+        image: "assets/1.jpg",
         buttonText: "join the community",
         buttonLink: "https://example.com/2"
     },
     3: {
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corrupti neque fuga id sit consequatur.",
-        image: "https://via.placeholder.com/300",
+        image: "assets/1.jpg",
         buttonText: "join the community",
         buttonLink: "https://example.com/3"
     },
     4: {
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla corrupti neque fuga id sit consequatur.",
-        image: "https://via.placeholder.com/300",
+        image: "assets/1.jpg",
         buttonText: "join the community",
         buttonLink: "https://example.com/4"
     }
@@ -107,21 +107,73 @@ pageButtons.forEach(button => {
 
 openDrawers.forEach(button => {
     button.addEventListener('click', () => {
-        const slideNumber = button.getAttribute('data-slide');
-        roadmapSlideNumber.textContent = slideNumber;
+        const slideNumber = parseInt(button.getAttribute('data-slide'));
 
-        const data = roadmapData[slideNumber];
-        roadmapDescription.textContent = data.description;
-        roadmapImage.src = data.image;
-        roadmapImage.style.display = 'block';
-        roadmapButton.textContent = data.buttonText;
-        roadmapButton.href = data.buttonLink;
-        roadmapButton.style.display = 'none';
-        pnnngm.style.transform = 'translateY(150px)';
+        // پاکسازی محتوای قبلی در roadmapContent
+        roadmapContent.innerHTML = '';
+
+        // ایجاد دکمه بستن (ضربدر) فقط یکبار در ابتدای رودمپ‌ها
+        const closeButton = document.createElement('button');
+        closeButton.classList.add('close-button');
+        closeButton.innerHTML = '&times;'; // ضربدر
+        closeButton.style.top = '10px';        
+        closeButton.style.position = 'absolute';
+        closeButton.style.left = '100px';
+        closeButton.style.fontSize = '44px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.background = 'transparent';
+        closeButton.style.color = '#fcfcfc';
+        closeButton.style.border = 'none';
+        closeButton.style.marginTop = '100px';
+        pnnngm.style.marginTop = '50px';
+
+        closeButton.addEventListener('click', () => {
+            roadmapContent.style.display = 'none'; // مخفی کردن همه رودمپ‌ها
+        });
+
+        // اضافه کردن دکمه بستن به بالای رودمپ
+        roadmapContent.appendChild(closeButton);
+
+        // ایجاد سه اسلاید به صورت همزمان
+        for (let i = 0; i < 3; i++) {
+            const currentSlideNumber = slideNumber + i;
+            const data = roadmapData[currentSlideNumber];
+
+            // ساخت یک بخش جدید برای هر اسلاید
+            const slideSection = document.createElement('div');
+            slideSection.classList.add('slide-section');
+
+            // اضافه کردن شماره اسلاید
+            const slideTitle = document.createElement('h3');
+            slideTitle.textContent = `Slide Roadmap ${currentSlideNumber}`;
+            slideSection.appendChild(slideTitle);
+
+            // اضافه کردن توضیحات
+            const description = document.createElement('p');
+            description.textContent = data.description;
+            slideSection.appendChild(description);
+
+            // اضافه کردن تصویر
+            const image = document.createElement('img');
+            image.src = data.image;
+            image.alt = 'Roadmap Image';
+            slideSection.appendChild(image);
+
+            // اضافه کردن دکمه
+            const button = document.createElement('a');
+            button.textContent = data.buttonText;
+            button.href = data.buttonLink;
+            slideSection.appendChild(button);
+
+            // اضافه کردن بخش به roadmapContent
+            roadmapContent.appendChild(slideSection);
+        }
+
+        // نمایش بخش roadmapContent
         roadmapContent.style.display = 'block';
-        roadmapContent.style.maxHeight = '400px';
+        roadmapContent.style.maxHeight = '1200px'; // افزایش ارتفاع برای نمایش سه اسلاید
 
-        document.querySelector('.pagination').style.marginTop = '400px';
+        document.querySelector('.pagination').style.marginTop = '1200px';
 
         roadmapContent.scrollIntoView({ behavior: 'smooth' });
         PageBody.style.overflowY = 'scroll';
